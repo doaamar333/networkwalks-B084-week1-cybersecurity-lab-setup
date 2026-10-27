@@ -41,7 +41,7 @@ The network uses the `10.0.0.0/24` address range, and the Kali VM uses the IP ad
 
 Additional virtual machines can be connected to the same network in future projects.
 
-![Lab Architecture](screenshots/lab-architecture.png)
+![Lab Architecture](1-screenshot-title-image.png)
 
 ## ⚙️ Lab Configuration
 
@@ -79,7 +79,7 @@ I created a dedicated NAT Network in VirtualBox with the following configuration
 - **DHCP:** Enabled
 - **IPv6:** Disabled
 
-![NAT Network Configuration](screenshots/nat-network.png)
+![NAT Network Configuration](2-screenshot-network-settings1.png)
 
 This network mode allows connected virtual machines to communicate with each other while providing outbound network connectivity.
 
@@ -95,7 +95,7 @@ The network adapter was configured as follows:
 
 The VM was allocated **2048 MB of RAM**. I also configured a shared folder to facilitate file transfers between Windows and Kali Linux.
 
-![Kali VM Configuration](screenshots/vm-configuration.png)
+![Kali VM Configuration](3-screenshot-kali-linux.png)
 
 ### Step 5. Configure the Kali Linux Network
 
@@ -106,5 +106,11 @@ The resulting configuration was:
 - **IP Address:** `10.0.0.2/24`
 - **Subnet Mask:** `255.255.255.0`
 - **Default Gateway:** `10.0.0.1`
-- **Interface:** `eth0
+- **DNS:** 
+
+
+
+
+
+
 - 
