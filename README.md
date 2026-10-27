@@ -106,7 +106,126 @@ The resulting configuration was:
 - **IP Address:** `10.0.0.2/24`
 - **Subnet Mask:** `255.255.255.0`
 - **Default Gateway:** `10.0.0.1`
-- **DNS:** 
+- **DNS:** `8.8.8.8`
+
+![Kali network Configuration](4-screenshot-kali-network-settings.png)
+
+  ## Step 6. Create a Clean VM Snapshot
+
+After completing the initial configuration of my Kali Linux virtual machine, I planned to create a VirtualBox snapshot to preserve the initial state of my laboratory.
+
+This snapshot will serve as a recovery point for my virtual machine. If future experiments affect my configuration, I will be able to restore the VM to its previous state.
+
+**Status:** Pending — snapshot creation and verification are still required.
+
+---
+
+# 🔎 Lab Verification
+
+I used network commands to check my Kali Linux configuration and test Internet connectivity. The following table summarizes my results and the additional checks I still need to complete.
+
+| **✅ Test** | **🧾 Command** | **🎯 Result / Status** |
+|---|---|---|
+| 🌐 Check IP address | `ip a` | Verified: `10.0.0.2/24` |
+| 🛣️ Check routing table | `ip route` | Verified: gateway `10.0.0.1` |
+| 🌍 Test Internet connectivity | `ping google.com` | Successful replies received |
+| 📡 Test gateway connectivity | `ping -c 4 10.0.0.1` | Not yet verified separately |
+| 🔎 Test DNS resolution | `nslookup networkwalks.com` | Not yet verified separately |
+| 🧰 Verify Nmap installation | `nmap --version` | Not yet verified |
+| 🔄 Verify snapshot | Restore snapshot and run `ip a` | Pending snapshot creation |
+
+### My Network Configuration
+
+During my setup, I obtained the following network configuration:
+
+```text
+Kali IP Address: 10.0.0.2/24
+Default Gateway: 10.0.0.1
+Virtual Network: 10.0.0.0/24
+Network Interface: eth0
+```
+
+I successfully tested Internet connectivity using `ping google.com`. This confirmed that my Kali VM could access the Internet and resolve the domain name.
+
+---
+
+# Problems Encountered & Solutions
+
+I also explored a troubleshooting method that may be useful when configuring a virtual cybersecurity laboratory.
+
+## Problem . Internet Connectivity After Network Configuration
+
+Changing IPv4 settings can sometimes affect Internet connectivity, depending on the Kali Linux and NetworkManager configuration.
+
+To investigate network problems, I can check the interface using `ip a`, inspect the routing table with `ip route`, and test connectivity using `ping`.
+
+A possible workaround for certain Duplicate Address Detection (DAD) timeout issues is:
+
+```bash
+sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0
+```
+
+
+
+---
+
+# 💡 What I Learned
+
+Through this project, I gained practical experience setting up a virtual environment for cybersecurity practice.
+
+### 1. NAT vs. NAT Network
+
+I learned that NAT and NAT Network serve different purposes. A NAT Network allows virtual machines connected to the same virtual network to communicate with one another while providing external network connectivity.
+
+### 2. Virtual Machine Networking
+
+I learned how VirtualBox network adapters connect my virtual machine to a virtual network and how the selected network mode affects communication and Internet access.
+
+### 3. IP Addressing and Network Verification
+
+I practiced checking my network interface, identifying my assigned IPv4 address, inspecting the routing table, and testing Internet connectivity from Kali Linux.
+
+I also learned that IP connectivity and DNS resolution are separate aspects of network troubleshooting.
+
+### 4. VM Snapshots
+
+I learned that snapshots provide recovery points for virtual machines. Creating a clean snapshot before experimenting with unfamiliar configurations can help me restore a known state if something goes wrong.
+
+### 5. Technical Documentation
+
+I learned the importance of documenting commands, configuration details, verification results, screenshots, and troubleshooting steps. Clear documentation makes my work easier to review and reproduce.
+
+---
+
+# 🔐 Security & Ethical Use
+
+I created this laboratory for educational purposes and authorized cybersecurity practice. I will use it to develop my technical skills in a controlled environment and perform testing only on systems and networks for which I have permission.
+
+---
+
+# 🔗 Tools & Resources
+
+- **7-Zip:** [https://7-zip.org/download.html](https://7-zip.org/download.html)
+- **VirtualBox:** [https://virtualbox.org/wiki/Downloads](https://virtualbox.org/wiki/Downloads)
+- **Kali Linux:** [https://kali.org/get-kali](https://kali.org/get-kali)
+
+---
+
+# 👤 Author
+
+**MAROUANE Doaa**  
+Cybersecurity & Cloud Computing Student 
+
+LinkedIn: [linkedin.com/marouane/doaa](www.linkedin.com/in/doaa-marouane-bb61b4440)
+
+---
+
+## 📌 Project Information
+
+**Program Name:** Cybersecurity at NetworkWalks  
+**Week:** 01  
+**Project:** Cybersecurity & Pentesting Lab Setup  
+**Repository:** GitHub
 
 
 
